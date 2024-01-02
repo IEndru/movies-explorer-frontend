@@ -1,0 +1,172 @@
+.aboutProject {
+    padding: 110px 70px;
+    background: #202020;
+}
+.aboutProject__title {
+    display: block;
+    border-bottom:1px solid #DADADA;
+    margin: 0;
+    padding: 0 0 23px;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.88px;
+}
+
+.aboutProject__description-blocks {
+    display: flex;
+    justify-content: space-between;
+    padding: 70px 0 110px;
+    gap: 40px;
+}
+
+.aboutProject__description-block {
+    max-width: 550px;
+}
+
+.aboutProject__description-blockTitle{
+    margin: 0;
+    padding: 0;
+    color: #FFF;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.8px;
+}
+
+.aboutProject__description-blockText{
+    color: #FFF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 142.857%;
+    display: block;
+    margin-top: 26px;
+}
+
+.aboutProject__deadline {
+    display: flex;
+    height: 36px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.aboutProject__deadlineBackend {
+    background: #3DDC84;
+    width: 20%;
+    color: #000;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aboutProject__deadlineFrontend {
+    background: #303030;
+    width: 80%;
+    color: #FFF;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aboutProject__partsProject {
+    display: flex;
+    color: #8B8B8B;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 121.429%;
+    margin-top: 14px;
+}
+
+.aboutProject__partBackend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+}
+
+.aboutProject__partFrontend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+}
+
+@media screen and (max-width: 768px) {
+    .aboutProject {
+        padding: 90px 50px;
+    }
+
+    .aboutProject__description-blocks {
+        padding-bottom: 93px;
+        gap: 30px;
+    }
+
+    .aboutProject__description-blockText{
+        font-size: 12px;
+        line-height: 150%;
+        margin-top: 22px;
+    }
+/*
+    .aboutProject__deadlineBackend {
+        width: 21% ;
+    }
+
+    .aboutProject__deadlineFrontend {
+        width: 79% ;
+    }*/
+}
+
+@media screen and (max-width: 320px) {
+    .aboutProject {
+        padding: 70px 18px;
+    }
+
+    .aboutProject__title {
+        font-size: 18px;
+        letter-spacing: -0.72px;
+        padding: 0 0 28px;
+    }
+
+    .aboutProject__description-blocks {
+        padding: 60px 0;
+        flex-direction: column;
+        gap: 56px;
+    }
+
+    .aboutProject__description-blockTitle{
+        font-size: 18px;
+        letter-spacing: -0.72px;
+    }
+
+    .aboutProject__description-blockText{
+        font-size: 11px;
+        line-height: 145.455%;
+        margin-top: 16px;
+    }
+
+    .aboutProject__deadline {
+        font-size: 11px;
+        height: 35px;
+
+    }
+    .aboutProject__partsProject {
+        font-size: 11px;
+        margin-top: 10px ;
+    }
+
+}
+
+
+
+
