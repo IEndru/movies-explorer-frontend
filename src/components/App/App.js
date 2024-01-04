@@ -1,9 +1,11 @@
 import Main from "../Main/Main";
+import Movies from "../Movies/Movies";
 
 function App() {
     return (
         <div className="App">
-            <Main />
+            {/*<Main />*/}
+            <Movies />
         </div>
     );
 }

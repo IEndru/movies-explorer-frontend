@@ -1,0 +1,146 @@
+.movie {
+    display: flex;
+    flex-direction: column;
+    max-height: 319px;
+    border-radius: 6px;
+    background: #222;
+    box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.08);
+    width: 360px;
+}
+
+.movie__header {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    align-items: center;
+    padding: 18px;
+
+}
+
+.movie__title {
+    color: #FFF;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+    margin: 0;
+    padding: 0;
+    max-width: 240px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.movie__time {
+    color: #8B8B8B;
+    text-align: right;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 138.462%;
+    margin: 0;
+    padding: 0;
+}
+
+.movie__link {
+    height: 200px;
+    box-sizing: border-box;
+}
+
+.movie__img {
+    width: 360px;
+    height: 200px;
+    flex-shrink: 0;
+}
+
+.movie__btn{
+    width: 100px;
+    flex-shrink: 0;
+    margin: 18px auto;
+    border-radius: 30px;
+    background: #313131;
+    border: none;
+    color: #FFF;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 91.667%;
+    padding: 9px 15px;
+    cursor: pointer;
+}
+
+.movie__btn_saved {
+    background-image: url("../../images/btnSaved.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 18px auto;
+    width: 100px;
+    height: 29px;
+    flex-shrink: 0;
+    cursor: pointer;
+    border: none;
+    background-color: #222;
+}
+
+@media screen and (max-width: 768px) {
+    .movie {
+        max-height: 309px;
+        width: 342px;
+    }
+
+    .movie__title {
+        max-width: 224px;
+    }
+
+    .movie__link {
+        height: 190px;
+    }
+
+    .movie__img {
+        width: 342px;
+        height: 190px;
+    }
+
+}
+
+@media screen and (max-width: 360px) {
+    .movie {
+        max-height: 271px;
+        width: 300px;
+    }
+
+    .movie__header {
+        padding: 14px;
+
+    }
+
+    .movie__title {
+        font-size: 12px;
+        line-height: 150%;
+        max-width: 200px;
+    }
+
+    .movie__time {
+        font-size: 10px;
+        line-height: 100%;
+    }
+
+    .movie__link {
+        height: 168px;
+    }
+
+    .movie__img {
+        width: 300px;
+        height: 168px;
+    }
+
+    .movie__btn{
+        margin: 14px auto;
+    }
+
+    .movie__btn_saved {
+        margin: 14px auto;
+    }
+
+}
