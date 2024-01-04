@@ -11,7 +11,7 @@ const MoviesCard = () => {
             <a className='movie__link' target='_blank'>
                 <img className='movie__img' src={film} alt="Фильм"/>
             </a>
-            <button className='movie__btn movie__btn_saved' type='button'>Сохранить</button>
+            <button className='movie__btn' type='button'>Сохранить</button>
             {/*<button className='movie__btn_saved' type='button'></button>*/}
         </article>
     )
