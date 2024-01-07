@@ -42,6 +42,11 @@
 .portfolio__link {
     color: #FFF;
     text-decoration: none;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.portfolio__link:hover {
+    opacity: 0.7;
 }
 
 .portfolio__project span {

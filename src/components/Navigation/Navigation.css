@@ -1,0 +1,132 @@
+.navigation {
+    display: flex;
+    align-items: center;
+}
+
+.navigation__movies {
+    margin-right: 50px;
+}
+
+.navigation__movies-link {
+    text-decoration: none;
+    color: #FFF;
+    text-align: right;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 128.571%;
+}
+
+.navigation__movies-link_active {
+    font-weight: 500;
+}
+
+
+.navigation__movies-link:first-of-type {
+    margin-right: 20px;
+}
+
+
+.navigation__account-btn {
+    display: flex;
+    gap: 13px ;
+    background: #073042;
+    border: none;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navigation__account-btn_black {
+    background: #202020;
+}
+
+
+.navigation__account-text {
+    color: #FFF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 114.286%;
+}
+
+.navigation__box-for-icon {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    background: #0F4157;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigation__box-for-icon_black {
+    background: #313131;
+}
+
+.navigation__account-icon {
+    width: 10.383px;
+    height: 10.669px;
+    flex-shrink: 0;
+}
+
+.navigation__auth {
+    margin-right: 30px;
+}
+
+.navigation__auth-link {
+    text-decoration: none;
+    color: #FFF;
+    text-align: right;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 133.333%;
+}
+
+.navigation__in-btn {
+    color: #000;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 133.333%;
+    border-radius: 3px;
+    background: #3DDC84;
+    border: none;
+    padding: 8px 20px;
+    cursor: pointer;
+
+}
+
+.navigation__btn-burger {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    background-size: cover;
+    background-position: center;
+    background: #073042;
+    border: none;
+    background-image: url('../../images/burgerIcon.png');
+    display: none;
+}
+
+.navigation__btn-burger_black {
+    background: #202020;
+    background-image: url('../../images/burgerIcon.png');
+}
+
+.navigation__link {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+    .navigation__movies,
+    .navigation__account-btn,
+    .navigation__auth,
+    .navigation__in-btn {
+        display: none;
+    }
+    .navigation__btn-burger {
+        display: block;
+    }
+}

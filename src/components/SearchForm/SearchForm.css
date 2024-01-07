@@ -44,6 +44,12 @@
     padding: 17px 20px;
     margin: 0;
     cursor: pointer;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.search__btn:hover {
+    opacity: 0.8;
+
 }
 
 .search__hr {

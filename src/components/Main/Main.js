@@ -5,10 +5,13 @@ import Techs from "../Techs/Techs";
 import Footer from "../Footer/Footer";
 import AboutMe from "../AboutMe/AboutMe";
 import Portfolio from "../Portfolio/Portfolio";
-function Main (){
+import './Main.css'
+
+function Main ({loggedIn}){
+    console.log(loggedIn);
     return (
         <div className="App">
-            <Header />
+            <Header loggedIn={loggedIn} />
             <Promo />
             <AboutProject />
             <Techs />

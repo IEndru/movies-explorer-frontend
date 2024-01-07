@@ -1,7 +1,11 @@
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 import './MoviesCardList.css';
 import MoviesCard from "../MoviesCard/MoviesCard";
 
 const MoviesCardList = () => {
+    const location = useLocation();
+    const isSavedMoviesPage = location.pathname === '/saved-movies';
     return (
         <section className='movies-list'>
             <div className='movies-list__wrapper'>
@@ -11,9 +15,10 @@ const MoviesCardList = () => {
                 <MoviesCard />
                 <MoviesCard />
             </div>
-            <button className='movies-list__btn' type='button'>
-                Ещё
-            </button>
+            {isSavedMoviesPage ? null : (
+                <button className='movies-list__btn' type='button'>
+                    Ещё
+                </button>)}
         </section>
     )
 };

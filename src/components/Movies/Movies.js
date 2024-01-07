@@ -4,10 +4,10 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList"
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
-function Movies (){
+function Movies ({loggedIn}){
     return (
         <>
-            <Header />
+            <Header loggedIn={loggedIn} />
             <SearchForm />
             {/*<Preloader />*/}
             <MoviesCardList />

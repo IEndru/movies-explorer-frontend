@@ -4,7 +4,13 @@
     padding: 18px 70px ;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
+
+.header_black {
+    background: #202020;
+}
+
 
 .header__logo {
     width: 38px;

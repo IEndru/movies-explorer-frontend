@@ -14,7 +14,7 @@ function AboutMe() {
                         С 2017 года работал системным администратором!
                         Месяц назад перешёл в отдел разработки в той же компании!
                         Хочу дальше развиваться в этом направлении! </p>
-                    <a className='aboutМе-link' href="https://github.com/IEndru">Github</a>
+                    <a className='aboutМе-link'  target='_blank' href="https://github.com/IEndru">Github</a>
                 </div>
                 <img className='aboutМе-photo' src={I} alt="Студент"/>
             </div>

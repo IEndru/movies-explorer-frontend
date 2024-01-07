@@ -1,7 +1,16 @@
+import React, { useState }from 'react';
+import { useLocation } from 'react-router-dom';
 import './MoviesCard.css';
 import film from '../../images/Film.png';
 
 const MoviesCard = () => {
+    const location = useLocation();
+    const isSavedMoviesPage = location.pathname === '/saved-movies';
+    const [isSaved, setIsSaved] = useState(false);
+    const handleSaveClick = () => {setIsSaved(prevIsSaved =>!prevIsSaved)};
+
+
+
     return (
         <article className='movie'>
             <div className='movie__header'>
@@ -11,8 +20,19 @@ const MoviesCard = () => {
             <a className='movie__link' target='_blank'>
                 <img className='movie__img' src={film} alt="Фильм"/>
             </a>
-            <button className='movie__btn' type='button'>Сохранить</button>
-            {/*<button className='movie__btn_saved' type='button'></button>*/}
+            {isSavedMoviesPage ? (
+                <button className='movie__btn_close' type='button'></button>
+            ) : (
+                <>
+                    {isSaved ? (
+                        <button className='movie__btn_saved' type='button' onClick={handleSaveClick}></button>
+                    ) : (
+                        <button className='movie__btn' type='button' onClick={handleSaveClick}>
+                            Сохранить
+                        </button>
+                    )}
+                </>
+            )}
         </article>
     )
 };

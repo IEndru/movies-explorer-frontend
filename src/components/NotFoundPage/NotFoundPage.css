@@ -37,7 +37,16 @@
     font-weight: 400;
     line-height: normal;
     margin-top: 184px;
+    text-decoration: none;
+    transition: opacity 0.5s ease-in-out;
 }
+
+.notfound-page__link:hover {
+    opacity: 0.7;
+}
+
+
+
 
 @media screen and (max-width: 768px) {
     .notfound-page {

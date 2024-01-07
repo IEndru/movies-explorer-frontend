@@ -1,3 +1,5 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 import './Login.css'
 import LogoInHeader from '../../images/LogoInHeader.png';
 
@@ -5,7 +7,9 @@ function Login () {
     return (
         <section className='login'>
             <div className='login__header'>
-                <img className='login__logo' src={LogoInHeader} alt='Логотип'/>
+                <Link className='login__header-link' to='/'>
+                    <img src={LogoInHeader} className="login__logo" alt="Логотип" />
+                </Link>
                 <h1 className='login__title'>Рады видеть!</h1>
             </div>
             <form className='login__form'>
@@ -17,8 +21,8 @@ function Login () {
                 <span className='login__err'>Что-то пошло не так...</span>
                 <button className='login__btn-sub' type='submit'>Войти</button>
                 <div className='login__footer'>
-                    <span className='login__question'>Уже зарегистрированы?</span>
-                    <a className='login__link'>Войти</a>
+                    <span className='login__question'>Ещё не зарегистрированы?</span>
+                    <Link to='/signup' className='login__link'>Регистрация</Link>
                 </div>
             </form>
         </ section>

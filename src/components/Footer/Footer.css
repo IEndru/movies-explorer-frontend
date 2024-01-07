@@ -39,6 +39,24 @@
     padding: 0;
 }
 
+.footer__link {
+   cursor: pointer;
+    text-decoration: none;
+    color: #FFF;
+    text-align: right;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.footer__link:hover {
+    opacity: 0.7;
+}
+
+
 @media screen and (max-width: 768px) {
     .footer {
         padding: 79px 30px 20px;

@@ -68,6 +68,8 @@
     line-height: 91.667%;
     padding: 9px 15px;
     cursor: pointer;
+    height: 29px;
+    transition: 0.5s ease-in-out;
 }
 
 .movie__btn_saved {
@@ -81,6 +83,21 @@
     cursor: pointer;
     border: none;
     background-color: #222;
+    transition: 0.5s ease-in-out;
+}
+
+.movie__btn_close {
+    background-image: url("../../images/btnCloseFilm.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 18px auto;
+    width: 100px;
+    height: 29px;
+    flex-shrink: 0;
+    cursor: pointer;
+    border: none;
+    background-color: #222;
+    transition: 0.5s ease-in-out;
 }
 
 @media screen and (max-width: 768px) {

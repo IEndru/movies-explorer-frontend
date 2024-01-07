@@ -1,10 +1,10 @@
 import './Profile.css'
 import Header from "../Header/Header";
 
-function Profile () {
+function Profile ({loggedIn}) {
     return (
         <>
-            <Header />
+            <Header loggedIn={loggedIn} />
             <section className='profile'>
                 <h1 className='profile__title'>Привет, Андрей!</h1>
                 <form className='profile___form'>
