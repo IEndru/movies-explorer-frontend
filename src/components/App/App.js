@@ -9,7 +9,7 @@ import Login from "../Login/Login";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(true);// поменять на false
+    const [isLoggedIn, setIsLoggedIn] = useState(true);// поменять на false при не зарегистрированном пользователе
     console.log(isLoggedIn)
     return (
         <div className="App">

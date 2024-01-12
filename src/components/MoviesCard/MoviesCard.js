@@ -9,15 +9,13 @@ const MoviesCard = () => {
     const [isSaved, setIsSaved] = useState(false);
     const handleSaveClick = () => {setIsSaved(prevIsSaved =>!prevIsSaved)};
 
-
-
     return (
         <article className='movie'>
             <div className='movie__header'>
                 <h2 className='movie__title'>В погоне за Бенкси</h2>
                 <p className='movie__time'>0ч 42м</p>
             </div>
-            <a className='movie__link' target='_blank'>
+            <a className='movie__link' target='_blank' href="https://www.youtube.com/watch?v=D5fBhbEJxEU">
                 <img className='movie__img' src={film} alt="Фильм"/>
             </a>
             {isSavedMoviesPage ? (

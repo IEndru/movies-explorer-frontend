@@ -8,7 +8,6 @@ function Navigation ({ loggedIn, isHomePage }){
     let localRoute = useLocation();
     const [isBurgerOpen, setIsBurgerOpen] = useState(false);
     console.log(loggedIn)
-
     const changeBurgerMenu = () => setIsBurgerOpen(prevIsBurgerOpen => !prevIsBurgerOpen);
 
     return (
@@ -36,9 +35,9 @@ function Navigation ({ loggedIn, isHomePage }){
                     <button className='navigation__in-btn' type='button'>Войти</button>
                 </Link>
             </>)}
-            {loggedIn && !isBurgerOpen ? (
-            <button onClick={changeBurgerMenu} className={`navigation__btn-burger ${isHomePage ? '' :'navigation__btn-burger_black'}`} type='button'></button>
-            ) : (<MenuFromBurger onClose={changeBurgerMenu} />)}
+            {loggedIn ? (!isBurgerOpen ? (
+                <button onClick={changeBurgerMenu} className={`navigation__btn-burger ${isHomePage ? '' :'navigation__btn-burger_black'}`} type='button'></button>
+            ) : (<MenuFromBurger onClose={changeBurgerMenu} />)) : ''}
         </nav>
     );
 }

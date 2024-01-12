@@ -2,6 +2,7 @@
     background: #073042;
     height: 574px;
     padding: 75px 70px;
+    box-sizing: border-box;
 }
 
 .promo__container {
@@ -69,10 +70,11 @@
     opacity: 0.7;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 890px) {
     .promo {
         padding: 140px 44px 76px;
         height: 634px;
+        box-sizing:content-box;
     }
 
     .promo__container{
@@ -111,10 +113,6 @@
         max-height: 536px;
     }
 
-    .promo__container{
-
-    }
-
     .promo__logo {
         width: 210.001px;
         height: 206px;
@@ -132,9 +130,5 @@
 
     .promo__subtitle {
         margin-bottom: 80px;
-    }
-
-    .promo__link {
-
     }
 }

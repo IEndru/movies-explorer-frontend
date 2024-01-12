@@ -14,7 +14,6 @@
     box-sizing: border-box;
     align-items: center;
     padding: 18px;
-
 }
 
 .movie__title {
@@ -45,6 +44,7 @@
 .movie__link {
     height: 200px;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .movie__img {
@@ -72,6 +72,10 @@
     transition: 0.5s ease-in-out;
 }
 
+.movie__btn:hover {
+    opacity: 0.8;
+}
+
 .movie__btn_saved {
     background-image: url("../../images/btnSaved.png");
     background-repeat: no-repeat;
@@ -86,6 +90,10 @@
     transition: 0.5s ease-in-out;
 }
 
+.movie__btn_saved:hover {
+    opacity: 0.8;
+}
+
 .movie__btn_close {
     background-image: url("../../images/btnCloseFilm.png");
     background-repeat: no-repeat;
@@ -98,6 +106,10 @@
     border: none;
     background-color: #222;
     transition: 0.5s ease-in-out;
+}
+
+.movie__btn_close:hover {
+    opacity: 0.8;
 }
 
 @media screen and (max-width: 768px) {

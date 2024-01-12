@@ -13,7 +13,6 @@
     grid-row-gap: 32px;
     justify-content: center;
     justify-items: center;
-
 }
 
 .movies-list__btn {
@@ -37,6 +36,10 @@
     opacity: 0.8;
 }
 
+.movies__stub {
+    height: 144px;
+}
+
 @media screen and (max-width: 768px) {
     .movies-list {
         padding: 70px 30px 80px;
@@ -50,6 +53,10 @@
 
     .movies-list__btn {
         margin-top: 80px;
+    }
+
+    .movies__stub {
+        height: 90px;
     }
 }
 

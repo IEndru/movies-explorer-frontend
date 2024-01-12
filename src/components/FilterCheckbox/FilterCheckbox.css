@@ -12,7 +12,7 @@
     width: 36px;
     height: 20px;
     flex-shrink: 0;
-    background-color: rgba(235, 235, 235, 1);
+    background-color: rgba(52, 52, 52, 1);
     border-radius: 10px;
     position: relative;
     cursor: pointer;
@@ -23,7 +23,7 @@
     content: "";
     width: 8px;
     height: 8px;
-    background-color: rgba(245, 245, 245, 1);
+    background-color: rgba(160, 160, 160, 1);
     border-radius: 50%;
     position: absolute;
     top: 50%;

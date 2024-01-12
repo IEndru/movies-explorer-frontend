@@ -21,11 +21,9 @@
     font-weight: 500;
 }
 
-
 .navigation__movies-link:first-of-type {
     margin-right: 20px;
 }
-
 
 .navigation__account-btn {
     display: flex;
@@ -39,7 +37,6 @@
 .navigation__account-btn_black {
     background: #202020;
 }
-
 
 .navigation__account-text {
     color: #FFF;
@@ -95,7 +92,6 @@
     border: none;
     padding: 8px 20px;
     cursor: pointer;
-
 }
 
 .navigation__btn-burger {
@@ -121,11 +117,10 @@
 
 @media screen and (max-width: 768px) {
     .navigation__movies,
-    .navigation__account-btn,
-    .navigation__auth,
-    .navigation__in-btn {
+    .navigation__account-btn {
         display: none;
     }
+
     .navigation__btn-burger {
         display: block;
     }

@@ -1,24 +1,40 @@
 import './Portfolio.css'
 function Portfolio() {
+
+    const projectLinks = [
+        {
+            path: "https://github.com/IEndru/how-to-learn",
+            label: "Статичный сайт",
+            target: "_blank",
+        },
+        {
+            path: "https://github.com/IEndru/russian-travel",
+            label: "Адаптивный сайт",
+            target: "_blank",
+        },
+        {
+            path: "https://github.com/IEndru/react-mesto-api-full-gha",
+            label: "Одностраничное приложение",
+            target: "_blank",
+        },
+    ];
+
     return (
         <section className ='portfolio'>
             <h2 className='portfolio__title'>Портфолио</h2>
             <ul className='portfolio__projects'>
-                <li className='portfolio__project'>
-                    <a className='portfolio__link' target='_blank' href="https://github.com/IEndru/how-to-learn">Статичный сайт</a>
-                    <span>↗</span>
-                </li>
-                <li className='portfolio__project'>
-                    <a className='portfolio__link' target='_blank' href="https://github.com/IEndru/russian-travel">Адаптивный сайт</a>
-                    <span>↗</span>
-                </li>
-                <li className='portfolio__project'>
-                    <a className='portfolio__link' target='_blank' href="https://github.com/IEndru/react-mesto-api-full-gha">Одностраничное приложение</a>
-                    <span>↗</span>
-                </li>
+                {projectLinks.map((project, index) => (
+                    <li className='portfolio__project' key={index}>
+                        <a className='portfolio__link' target={project.target} href={project.path}>
+                            {project.label}
+                        </a>
+                        <a className='portfolio__link-arrow' target={project.target} href={project.path}>↗</a>
+                    </li>
+                ))}
             </ul>
         </section>
     );
 }
 
 export default Portfolio;
+
