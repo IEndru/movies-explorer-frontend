@@ -9,12 +9,12 @@ function Header ({loggedIn}){
     const location = useLocation();
     const isHomePage = location.pathname === '/';
     return (
-        <div className={`header ${isHomePage ? '' : 'header_black'}`}>
+        <header className={`header ${isHomePage ? '' : 'header_black'}`}>
             <Link className='header__link' to='/'>
                 <img src={LogoInHeader} className="header__logo" alt="Логотип" />
             </Link>
             <Navigation loggedIn={loggedIn} isHomePage={isHomePage}/>
-        </div>
+        </header>
     );
 }
 

@@ -22,7 +22,7 @@ function Navigation ({ loggedIn, isHomePage }){
                     <button className={`navigation__account-btn ${isHomePage ? '' :'navigation__account-btn_black'}`} type='button'>
                         <span className='navigation__account-text'>Аккаунт</span>
                         <div className={`navigation__box-for-icon ${isHomePage ? '' :'navigation__box-for-icon_black'}`}>
-                            <img className='navigation__account-icon' src={accountIcon} alt=""/>
+                            <img className='navigation__account-icon' src={accountIcon} alt="иконка аккаунта"/>
                         </div>
                     </button>
                 </Link>

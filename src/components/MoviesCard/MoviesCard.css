@@ -76,7 +76,7 @@
     opacity: 0.8;
 }
 
-.movie__btn_saved {
+.movie__btn-saved {
     background-image: url("../../images/btnSaved.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -90,11 +90,11 @@
     transition: 0.5s ease-in-out;
 }
 
-.movie__btn_saved:hover {
+.movie__btn-saved:hover {
     opacity: 0.8;
 }
 
-.movie__btn_close {
+.movie__btn-close {
     background-image: url("../../images/btnCloseFilm.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -168,7 +168,7 @@
         margin: 14px auto;
     }
 
-    .movie__btn_saved {
+    .movie__btn-saved {
         margin: 14px auto;
     }
 

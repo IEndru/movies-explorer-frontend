@@ -15,7 +15,7 @@ const MoviesCardList = () => {
                 <MoviesCard />
                 <MoviesCard />
             </div>
-            {isSavedMoviesPage ? (<div className='movies__stub'/>) : (
+            {isSavedMoviesPage ? (<div className='movies-list__stub'/>) : (
                 <button className='movies-list__btn' type='button'>
                     Ещё
                 </button>)}

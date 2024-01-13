@@ -43,7 +43,7 @@ function Profile ({loggedIn}) {
     return (
         <>
             <Header loggedIn={loggedIn} />
-            <section className='profile'>
+            <main className='profile'>
                 <h1 className='profile__title'>Привет, Андрей!</h1>
                 <form className='profile__form'>
                     <div>
@@ -103,7 +103,7 @@ function Profile ({loggedIn}) {
                             </div>
                         )}
                 </form>
-            </section>
+            </main>
         </>
     );
 }

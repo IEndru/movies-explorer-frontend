@@ -20,6 +20,7 @@
     display: flex;
     justify-content: space-between;
     padding-top: 66px;
+    gap: 10px;
 }
 
 .about__content {
@@ -84,13 +85,13 @@
 
 @media screen and (max-width: 768px) {
     .about {
-        padding: 90px 50px 50px;
+        padding: 93px 50px 50px;
     }
 
     .about__description {
         display: flex;
         justify-content: space-between;
-        padding-top: 66px;
+        padding-top: 67px;
     }
 
     .about__name {
@@ -130,13 +131,14 @@
     .about__title {
         font-size: 18px;
         letter-spacing: -0.72px;
-        padding: 0 0 28px;
+        padding: 0 0 29px;
     }
 
     .about__description {
         flex-direction: column-reverse;
         padding-top: 60px;
         align-items: flex-start;
+        gap: 0;
     }
 
     .about__content {

@@ -8,7 +8,7 @@
     justify-content: space-between;
     border-radius: 8px;
     border: 1.5px solid rgba(170, 170, 170, 0.2);
-    padding: 10px 10px 10px 25px;
+    padding: 9px 10px 9px 25px;
     align-items: center;
     height: 52px;
 }
@@ -24,6 +24,12 @@
     font-style: normal;
     font-weight: 400;
     line-height: 111.111%;
+    margin-right: 5px;
+    padding: 0;
+}
+
+.search__input:focus {
+    background: #FFF;
 }
 
 .search__btn {
@@ -54,7 +60,7 @@
     opacity: 0.2;
     border: none;
     border-top: 1px solid #AAA;
-    margin: 43px 0 0;
+    margin: 42px 0 0;
     padding: 0;
     height: 0;
 }

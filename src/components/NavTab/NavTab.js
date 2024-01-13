@@ -1,8 +1,8 @@
 import './NavTab.css'
-function Promo() {
+function NavTab() {
     return (
-        <a href="#aboutProject" className='tab__link'>Узнать больше</a>
+        <a href="#aboutProject" className='promo__link'>Узнать больше</a>
     );
 }
 
-export default Promo;
+export default NavTab;

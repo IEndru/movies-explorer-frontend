@@ -1,5 +1,5 @@
 .portfolio {
-    padding:51px 70px 125px;
+    padding:51px 70px 106px;
     background: #202020;
 }
 
@@ -43,6 +43,7 @@
     color: #FFF;
     text-decoration: none;
     transition: opacity 0.5s ease-in-out;
+    padding-bottom: 20px;
 }
 
 .portfolio__link:hover {
@@ -68,7 +69,11 @@
 
 @media screen and (max-width: 768px) {
     .portfolio {
-        padding:41px 50px 90px;
+        padding:41px 50px 71px;
+    }
+
+    .portfolio__link {
+        padding-bottom: 19px;
     }
 
     .portfolio__projects {
@@ -88,7 +93,7 @@
 
 @media screen and (max-width: 500px) {
     .portfolio {
-        padding: 20px 14px 70px;
+        padding: 20px 14px 62px;
     }
 
     .portfolio__title {
@@ -113,5 +118,9 @@
 
     .portfolio__projects {
         margin: 43px 0 0;
+    }
+
+    .portfolio__link {
+        padding-bottom: 8px;
     }
 }

@@ -12,7 +12,6 @@ function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(true);// поменять на false при не зарегистрированном пользователе
     console.log(isLoggedIn)
     return (
-        <div className="App">
             <Routes>
                 <Route path='/' element={<Main loggedIn={isLoggedIn} />}/>
                 <Route path='/movies' element={<Movies  loggedIn={isLoggedIn} />}/>
@@ -22,7 +21,6 @@ function App() {
                 <Route path="/signup" element={<Register />}/>
                 <Route path='*' element={<NotFoundPage />} />
             </Routes>
-        </div>
     );
 }
 

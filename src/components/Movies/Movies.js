@@ -19,12 +19,14 @@ function Movies ({loggedIn}){
     return (
         <>
             <Header loggedIn={loggedIn} />
-            <SearchForm />
-            {isLoading ? (
-                <Preloader />
-            ) : (
-                <MoviesCardList />
-            )}
+            <main>
+                <SearchForm />
+                {isLoading ? (
+                    <Preloader />
+                ) : (
+                    <MoviesCardList />
+                )}
+            </main>
             <Footer />
         </>
     );

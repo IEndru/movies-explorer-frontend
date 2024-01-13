@@ -5,7 +5,7 @@ import LogoInHeader from '../../images/LogoInHeader.png';
 
 function Register () {
     return (
-        <section className='register'>
+        <main className='register'>
             <div className='register__header'>
                 <Link className='register__header-link' to='/'>
                     <img src={LogoInHeader} className="register__logo" alt="Логотип" />
@@ -16,8 +16,8 @@ function Register () {
                 <label className='register__label' htmlFor='name'>Имя</label>
                 <input className='register__input'  id='name' type='text' value='Андрей' placeholder='Введите имя'/>
                 <span className='register__err'></span>
-                <label className='register__label' htmlFor='email' placeholder='Введите почту'>E-mail</label>
-                <input className='register__input' id='email' type='email' value='pochta@yandex.ru' />
+                <label className='register__label' htmlFor='email' >E-mail</label>
+                <input className='register__input' id='email' type='email' value='pochta@yandex.ru' placeholder='Введите почту'/>
                 <span className='register__err'></span>
                 <label className='register__label' htmlFor='password'>Пароль</label>
                 <input className='register__input' id='password' type='password' value='••••••••••••••' placeholder='Введите пароль'/>
@@ -28,7 +28,7 @@ function Register () {
                     <Link to="/signin" className='register__link'>Войти</Link>
                 </div>
             </form>
-        </ section>
+        </main>
     );
 }
 

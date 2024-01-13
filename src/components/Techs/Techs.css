@@ -97,7 +97,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 420px) {
     .techs {
         padding: 70px 14px;
     }
@@ -129,6 +129,6 @@
     }
 
     .techs__list {
-        gap: 13px;
+        gap: 11px;
     }
 }

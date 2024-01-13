@@ -19,11 +19,11 @@ const MoviesCard = () => {
                 <img className='movie__img' src={film} alt="Фильм"/>
             </a>
             {isSavedMoviesPage ? (
-                <button className='movie__btn_close' type='button'></button>
+                <button className='movie__btn-close' type='button'></button>
             ) : (
                 <>
                     {isSaved ? (
-                        <button className='movie__btn_saved' type='button' onClick={handleSaveClick}></button>
+                        <button className='movie__btn-saved' type='button' onClick={handleSaveClick}></button>
                     ) : (
                         <button className='movie__btn' type='button' onClick={handleSaveClick}>
                             Сохранить

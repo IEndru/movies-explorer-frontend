@@ -36,7 +36,7 @@
     opacity: 0.8;
 }
 
-.movies__stub {
+.movies-list__stub {
     height: 144px;
 }
 
@@ -55,7 +55,7 @@
         margin-top: 80px;
     }
 
-    .movies__stub {
+    .movies-list__stub {
         height: 90px;
     }
 }

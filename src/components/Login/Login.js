@@ -5,7 +5,7 @@ import LogoInHeader from '../../images/LogoInHeader.png';
 
 function Login () {
     return (
-        <section className='login'>
+        <main className='login'>
             <div className='login__header'>
                 <Link className='login__header-link' to='/'>
                     <img src={LogoInHeader} className="login__logo" alt="Логотип" />
@@ -25,7 +25,7 @@ function Login () {
                     <Link to='/signup' className='login__link'>Регистрация</Link>
                 </div>
             </form>
-        </ section>
+        </main>
     );
 }
 
