@@ -36,13 +36,7 @@
     background: #073042;
     border: none;
     align-items: center;
-    cursor: pointer;
-    transition: opacity 0.5s ease-in-out;
     padding: 0;
-}
-
-.search__btn:hover {
-    opacity: 0.8;
 }
 
 .navigation__account-btn_black {
@@ -57,7 +51,7 @@
     line-height: 114.286%;
 }
 
-.navigation__box-for-icon {
+.navigation__box-icon {
     display: flex;
     width: 30px;
     height: 30px;
@@ -68,7 +62,7 @@
     align-items: center;
 }
 
-.navigation__box-for-icon_black {
+.navigation__box-icon_black {
     background: #313131;
 }
 
@@ -90,6 +84,12 @@
     font-style: normal;
     font-weight: 500;
     line-height: 133.333%;
+    cursor: pointer;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.navigation__auth-link:hover {
+    opacity: 0.7;
 }
 
 .navigation__in-btn {
@@ -121,6 +121,7 @@
     background-image: url('../../images/burgerIcon.png');
     display: none;
     padding: 0;
+    cursor: pointer;
     transition: opacity 0.5s ease-in-out;
 }
 

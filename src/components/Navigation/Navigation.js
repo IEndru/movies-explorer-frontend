@@ -19,12 +19,12 @@ function Navigation ({ loggedIn, isHomePage }){
                     <Link  className={localRoute.pathname === '/saved-movies'? 'navigation__movies-link navigation__movies-link_active' : 'navigation__movies-link'} to='/saved-movies'>Сохранённые фильмы</Link>
                 </div>
                 <Link to='/profile' className='navigation__link'>
-                    <button className={`navigation__account-btn ${isHomePage ? '' :'navigation__account-btn_black'}`} type='button'>
+                    <div className={`navigation__account-btn ${isHomePage ? '' :'navigation__account-btn_black'}`}>
                         <span className='navigation__account-text'>Аккаунт</span>
-                        <div className={`navigation__box-for-icon ${isHomePage ? '' :'navigation__box-for-icon_black'}`}>
+                        <div className={`navigation__box-icon ${isHomePage ? '' :'navigation__box-icon_black'}`}>
                             <img className='navigation__account-icon' src={accountIcon} alt="иконка аккаунта"/>
                         </div>
-                    </button>
+                    </div>
                 </Link>
             </>) : (
             <>

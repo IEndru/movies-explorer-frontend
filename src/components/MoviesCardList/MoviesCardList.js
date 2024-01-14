@@ -7,7 +7,7 @@ const MoviesCardList = () => {
     const location = useLocation();
     const isSavedMoviesPage = location.pathname === '/saved-movies';
     return (
-        <section className='movies-list'>
+        <div className='movies-list'>
             <div className='movies-list__wrapper'>
                 <MoviesCard />
                 <MoviesCard />
@@ -19,7 +19,7 @@ const MoviesCardList = () => {
                 <button className='movies-list__btn' type='button'>
                     Ещё
                 </button>)}
-        </section>
+        </div>
     )
 };
 

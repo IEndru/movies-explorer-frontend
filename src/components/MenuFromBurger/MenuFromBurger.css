@@ -4,8 +4,10 @@
 }
 
 .burger__close-btn {
-    width: 33px;
-    height: 33px;
+    /*width: 33px;
+    height: 33px;*/
+    min-width: 33px;
+    min-height: 33px;
     border: none;
     background-image: url('../../images/btnClose.png');
     background-size: cover;
@@ -15,6 +17,9 @@
     margin: 22px 22px 0 0;
     cursor: pointer;
     transition: opacity 0.5s ease-in-out;
+    /*position: fixed;
+    top: 22px;
+    right: 22px;*/
 }
 
 .burger__close-btn:hover {
