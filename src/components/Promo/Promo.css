@@ -1,0 +1,135 @@
+.promo {
+    background: #073042;
+    height: 574px;
+    padding: 75px 70px;
+    box-sizing: border-box;
+}
+
+.promo__container {
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.promo__content {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+}
+
+.promo__logo {
+    display: block;
+    width: 310px;
+    height: 304px;
+}
+
+.promo__title {
+    margin: 0 0 36px;
+    padding: 0;
+    color: #FFF;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 116%;
+    max-width: 640px;
+}
+
+.promo__subtitle {
+    display: inline-block;
+    color: #FFF;
+    max-width: 310px;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    opacity: 0.5;
+    margin: 0;
+    padding: 0;
+}
+
+.promo__link {
+    display: inline-block;
+    margin: auto 0 0;
+    text-decoration: none;
+    color: #FFF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 133.333%;
+    border-radius: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 10px 20px;
+    max-width: 129px;
+    text-align: center;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.promo__link:hover {
+    opacity: 0.7;
+}
+
+@media screen and (max-width: 890px) {
+    .promo {
+        padding: 140px 44px 76px;
+        height: 634px;
+        box-sizing:content-box;
+    }
+
+    .promo__container{
+        align-items: center;
+        flex-direction: column-reverse;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    .promo__logo {
+        margin-bottom: 48px;
+    }
+
+    .promo__title {
+        text-align: center;
+        font-size: 40px;
+        line-height: 125%;
+        margin-bottom: 22px;
+    }
+
+    .promo__subtitle {
+        margin: 0 auto 92px;
+        text-align: center;
+        max-width: 260px;
+    }
+
+    .promo__link {
+        margin: auto auto 0;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .promo {
+        padding: 70px 0 30px;
+        max-height: 536px;
+    }
+
+    .promo__logo {
+        width: 210px;
+        height: 206px;
+        flex-shrink: 0;
+        margin-bottom: 44px;
+    }
+
+    .promo__title {
+        margin-bottom: 24px;
+        padding: 0 10px;
+        color: #FFF;
+        font-size: 30px;
+        line-height: 126.667%;
+        letter-spacing: -1.2px;
+    }
+
+    .promo__subtitle {
+        margin-bottom: 80px;
+    }
+}

@@ -1,0 +1,168 @@
+.burger {
+    transition: 0.4s ease;
+    z-index: 2;
+}
+
+.burger__close-btn {
+    /*width: 33px;
+    height: 33px;*/
+    min-width: 33px;
+    min-height: 33px;
+    border: none;
+    background-image: url('../../images/btnClose.png');
+    background-size: cover;
+    background-position: center;
+    padding: 0;
+    align-self: flex-end;
+    margin: 22px 22px 0 0;
+    cursor: pointer;
+    transition: opacity 0.5s ease-in-out;
+    /*position: fixed;
+    top: 22px;
+    right: 22px;*/
+}
+
+.burger__close-btn:hover {
+    opacity: 0.8;
+}
+
+
+.burger__cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100%;
+}
+
+.burger__box {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 520px;
+    background: rgba(32, 32, 32, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.burger__menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    margin-top: 105px;
+}
+
+.burger-link {
+    color: #FFF;
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: none;
+    padding-bottom: 4px;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.burger-link:hover {
+    opacity: 0.7;
+}
+
+.burger-link_active {
+    border-bottom: 2px solid rgba(255, 255, 255, 1);
+}
+
+.burger__account-link {
+    text-decoration: none;
+    margin:618px 0 92px;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.burger__account-link:hover {
+    opacity: 0.7;
+}
+
+.burger__account-btn {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 114.286%;
+    color: #000000;
+    background-color: rgba(32, 32, 32, 1);
+    gap: 13px ;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.burger__account-btn:hover {
+    opacity: 0.8;
+}
+
+.burger__account-text {
+    color: #FFF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 114.286%;
+}
+
+.burger__box-for-icon {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    border-radius: 6px;
+    background: #313131;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.burger__account-icon {
+    width: 10.383px;
+    height: 10.669px;
+    flex-shrink: 0;
+    background-image: url('../../images/accountIcon.png');
+    background-size: cover;
+    background-position: center;
+}
+
+@media screen and (min-width: 769px) {
+    .burger {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .burger__box {
+        width: 320px;
+    }
+}
+
+
+@media screen and (max-width: 420px) {
+    .burger__close-btn {
+        margin: 13px 13px 0 0;
+    }
+
+    .burger__menu {
+        gap: 15px;
+        margin-top: 99px;
+    }
+
+    .burger-link {
+        padding-bottom: 7px;
+    }
+
+    .burger__account-link {
+        margin: 438px 0 48px;
+    }
+
+}
