@@ -1,85 +1,110 @@
-import React, { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Profile.css'
 import Header from "../Header/Header";
+import { useForm } from '../../hooks/useForm';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-function Profile ({loggedIn}) {
-    const userName = 'Андрей';
-    const userEmail = 'pochta@yandex.ru';
-    const [name, setName] = useState(userName);
-    const [email, setEmail] = useState(userEmail);
+function Profile ({loggedIn, onSignOut, onUpdateUser}) {
+    const currentUser = useContext(CurrentUserContext);
+
+    const {values, setValues, handleChange, errs, isValidForm, setIsValidForm} = useForm();
     const [isEditing, setEditing] = useState(false);
-    const [originalName, setOriginalName] = useState(userName);
-    const [originalEmail, setOriginalEmail] = useState(userEmail);
-    const [showError, setShowError] = useState(false);
+    console.log(values)
 
-    const handleEditClick = () => {
-        setOriginalName(name);
-        setOriginalEmail(email);
-        setEditing(true);
-        setShowError(false);
-    };
+//получаемм данные пользователя для заполнения инпутов из currentUser
+    useEffect(() => {
+        if (currentUser) {
+            setValues({
+                name: currentUser.name,
+                email: currentUser.email,
+            });
+        }
+    }, [setValues, currentUser]);
 
-    const handleSaveClick = () => {
-        if (name === originalName && email === originalEmail) {
-            setShowError(true);
-        } else if (!isValidName(name) || !isValidEmail(email)) {
-            setShowError(true);
+//проверяем совпадают ли текущие значения с новыми и есть ли ошибки валидаци
+    useEffect(() => {
+        // Проверяем, совпадают ли текущие значения с новыми
+        const valuesMatch = currentUser.name === values.name && currentUser.email === values.email;
+        // Проверяем, есть ли ошибки валидации
+        const hasValidationErrors = Object.values(errs).some(err => err !== '');
+        // Устанавливаем isValidForm в зависимости от условий
+        if (valuesMatch || hasValidationErrors) {
+            setIsValidForm(false);
         } else {
+            setIsValidForm(true);
+        }
+    }, [values, setIsValidForm, errs, currentUser]);
+
+    console.log(isValidForm, "setIsValidForm")
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if (isValidForm) {
+            onUpdateUser({
+                name: values.name,
+                email: values.email,
+            });
+            setIsValidForm(true);
+
+            console.log('форма отправлена')
             setEditing(false);
-            setShowError(false);
+
+        } else {
+            console.log('ошибка')
         }
     };
 
-    const isValidName = (value) => {
-        return value.length >= 2 && value.length <= 30;
+//при нажатии на кнопку редактировать снимается с импутов  disabled
+    const handleEditClick = () => {
+        setEditing(true);
     };
 
-    const isValidEmail = (value) => {
-        const emailRegex = /^\S+@\S+\.\S+$/;
-        return emailRegex.test(value);
-    };
-
+    console.log(errs)
+    console.log(isValidForm, 'valid form')
     return (
         <>
             <Header loggedIn={loggedIn} />
             <main className='profile'>
-                <h1 className='profile__title'>Привет, Андрей!</h1>
-                <form className='profile__form'>
+                <h1 className='profile__title'>Привет, {currentUser.name}!</h1>
+                <form className='profile__form' onSubmit={handleSubmit}>
                     <div>
                         <div className='profile__box-input'>
                             <label  htmlFor='name' className='profile__label'>Имя</label>
                             <input className='profile__input'
+                                   name="name"
                                    required
                                    type='text'
                                    id='name'
+                                   pattern="^[A-Za-zА-Яа-яЁё\-\s]+$"
                                    minLength= '2'
                                    maxLength= '30'
-                                   value={name}
+                                   value={values.name || ''}
                                    placeholder='Введите имя'
-                                   onChange={(event) => {
-                                       setName(event.target.value);
-                                   }}
+                                   onChange={handleChange}
                                    disabled={!isEditing}
                             />
                         </div>
+                        {errs.name ? (<span className='profile__error'>{errs.name}</span>) : (<span className='profile__error-stub'></span>) }
                         <hr className='profile__hr'></hr>
                         <div className='profile__box-input'>
                             <label htmlFor='email' className='profile__label'>E-mail</label>
                             <input className='profile__input'
+                                   name="email"
                                    required
                                    type='email'
+                                   pattern='^\S+@\S+\.\S+$'
                                    id='email'
-                                   value={email}
+                                   value={values.email || ''}
                                    placeholder='Введите почту'
-                                   onChange={(event) => {
-                                       setEmail(event.target.value);
-                                   }}
+                                   onChange={handleChange}
                                    disabled={!isEditing}
                             />
                         </div>
+                        {errs.email ? (<span className='profile__error'>{errs.email}</span>) : (<span className='profile__error-stub'></span>) }
                     </div>
-                        {showError ? (
+                        {/*{!isValidForm && Object.keys(errs).length > 0 ? (*/}
+                            {Object.values(errs).some(err => err !== '') ? (
                             <div className='profile__btns-err'>
                                 <span className='profile__btn-err-text'>При обновлении профиля произошла ошибка.</span>
                                 <button className='profile__btn-err' type='button' disabled>
@@ -88,16 +113,16 @@ function Profile ({loggedIn}) {
                             </div>
                         ) : isEditing ? (
                             <div className='profile__btns-save'>
-                                <button className='profile__btn-save' type='button' onClick={handleSaveClick}>
+                                <button className='profile__btn-save' type='submit' >
                                     Сохранить
                                 </button>
                             </div>
                         ) : (
                             <div className='profile__btns-edit'>
-                                <button className='profile__edit' type='button' onClick={handleEditClick}>
+                                <button key='editButton' className='profile__edit' type='button' onClick={handleEditClick}>
                                     Редактировать
                                 </button>
-                                <Link className='profile__exit-link' to='/'>
+                                <Link className='profile__exit-link' to='/' onClick={onSignOut}>
                                     Выйти из аккаунта
                                 </Link>
                             </div>
