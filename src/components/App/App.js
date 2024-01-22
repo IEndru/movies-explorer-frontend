@@ -11,16 +11,13 @@ import Login from "../Login/Login";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import * as MainApi from '../../utils/MainApi';
-import {getMovies} from "../../utils/MoviesApi";
+
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [currentUser, setCurrentUser] =useState({})
-    const [isMovies, setIsMovies] = useState([]);
     const [isMessage, setIsMessage] = useState('');
     const navigate = useNavigate();
-    console.log(isLoggedIn);
-
 
     const handleRegister = ({ name, email, password }) => {
         MainApi.register({ name, email, password })
@@ -59,6 +56,8 @@ function App() {
         setIsLoggedIn(false);
         localStorage.removeItem('isLoggedIn');
         localStorage.removeItem('token');
+        localStorage.removeItem('MoviesFromApi');
+        localStorage.clear();
         navigate('/');
     };
 //данных о текущем пользователе
@@ -68,7 +67,7 @@ function App() {
         if (token && storedIsLoggedIn) {
             MainApi.getUserInfo(token)
                 .then((data) => {
-                    console.log(data);
+                    /*console.log(data);*/
                     setCurrentUser(data);
                     setIsLoggedIn(true);
                 })
@@ -97,24 +96,6 @@ function App() {
         }
     }
 
-
-//запрос получения всех фильмов
-    useEffect(() => {
-        const fetchMovies = () => {
-            getMovies()
-                .then(data => {
-                    console.log(data);
-                    setIsMovies(data);
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        };
-        fetchMovies();
-    }, []);
-
-console.log(isMovies);
-
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <Routes>
@@ -123,6 +104,7 @@ console.log(isMovies);
                 <Route path='/movies' element={
                     < ProtectedRoute element={ Movies }
                                      loggedIn={isLoggedIn}
+                                     /*allMovies={ isMovies }*/
                     />
                 }
                 />
@@ -135,7 +117,7 @@ console.log(isMovies);
                 />
 
                 <Route path="/profile" element={
-                    <ProtectedRoute element={ Profile  }
+                    <ProtectedRoute element={ Profile }
                                     loggedIn={isLoggedIn}
                                     onSignOut={handleSignOut}
                                     onUpdateUser={handelUpdateUser}

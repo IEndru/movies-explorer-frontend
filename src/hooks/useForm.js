@@ -15,6 +15,6 @@ export function useForm() {
 
     };
 
-    return {values, setValues, handleChange, errs, isValidForm, setIsValidForm};
+    return {values, setValues, handleChange, errs, isValidForm, setIsValidForm };
 }
 

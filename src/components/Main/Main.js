@@ -8,7 +8,6 @@ import Portfolio from "../Portfolio/Portfolio";
 import './Main.css'
 
 function Main ({loggedIn}){
-    console.log(loggedIn);
     return (
         <div className="App">
             <Header loggedIn={loggedIn} />
