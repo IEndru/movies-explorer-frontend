@@ -25,3 +25,8 @@ export function filterMovies(movies, searchValue, shortDurationFilms){
     return shortDurationFilms ? filterShortDuration(foundFilms ) : foundFilms ;
 }
 
+export const getSavedFilms = (isSavedMovies, movie) => {
+    return isSavedMovies.find((isSavedMovie) => {
+        return isSavedMovie.movieId === (movie.id || movie.movieId);
+    });
+}

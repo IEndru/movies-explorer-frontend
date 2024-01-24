@@ -6,12 +6,18 @@ import { useLocation } from 'react-router-dom';
 
 const SearchForm = ({onSearchSubmit, shortMovies, onFilterCheckbox}) => {
     const location = useLocation();
-    const {values, handleChange, isValidForm} = useForm();
+    const {values, handleChange, isValidForm } = useForm();
 
     //submit для /movies
     function handleFormSubmit(event) {
         event.preventDefault();
         onSearchSubmit(values.searchQuery, isValidForm, shortMovies);
+    }
+
+    function handleFormSubmitSave(event) {
+        event.preventDefault();
+        onSearchSubmit(values.searchQuery, shortMovies);
+
     }
 
     useEffect(() => {
@@ -20,10 +26,11 @@ const SearchForm = ({onSearchSubmit, shortMovies, onFilterCheckbox}) => {
         (values.searchQuery = localStorage.getItem('userKeyword'));
     }, [location]);
 
+const submitValue = location.pathname === '/movies' ? handleFormSubmit : handleFormSubmitSave;
 
     return (
         <div className='search'>
-            <form className='search__form form' onSubmit={handleFormSubmit}>
+            <form className='search__form form' onSubmit={submitValue}>
                 <div className='search__form-input'>
                 <input className='search__input'
                        name='searchQuery'

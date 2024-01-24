@@ -8,7 +8,7 @@ import Footer from "../Footer/Footer";
 import {getMovies} from "../../utils/MoviesApi";
 import {filterMovies, filterShortDuration} from "../../utils/functionForFilms";
 
-function Movies ({loggedIn}){
+function Movies ({loggedIn, onSaveMovie,onRemoveMovie, isSavedMovies}){
     const [isLoading, setIsLoading] = useState(false);//нужно будет поменять на true
     const [shortMovies, setShortMovies] = useState(false);//флаг от чекбокса on off
     const [isAllMovies, setIsAllMovies] = useState([]);//все 100 фильмов полученные с сервера
@@ -39,6 +39,7 @@ const submitSearchForm = (keyword) => {
         return;
     }
     if (isAllMovies.length === 0) {
+        setIsLoading(true);
         getMovies()
             .then((movies) => {
             localStorage.setItem('MoviesFromApi', JSON.stringify(movies));//добавили все фильмы в LS
@@ -47,6 +48,7 @@ const submitSearchForm = (keyword) => {
         }).catch((err)=>{
             console.log('возникла ошибка', err)
         })
+            .finally(() => setIsLoading(false));
     } else {
         onUserFilteredMovies(isAllMovies, keyword, shortMovies);
     }
@@ -80,6 +82,8 @@ const submitSearchForm = (keyword) => {
         }
     }, [location]);
 
+    console.log(window)
+
     return (
         <>
             <Header loggedIn={loggedIn} />
@@ -94,6 +98,9 @@ const submitSearchForm = (keyword) => {
                 ) : (
                     <MoviesCardList
                         movies={filteredMovies}
+                        onSaveMovie={onSaveMovie}
+                        onRemoveMovie={onRemoveMovie}
+                        isSavedMovies={isSavedMovies}
                     />
                 )}
             </main>
