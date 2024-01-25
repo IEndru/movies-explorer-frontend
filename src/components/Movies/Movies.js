@@ -82,8 +82,6 @@ const submitSearchForm = (keyword) => {
         }
     }, [location]);
 
-    console.log(window)
-
     return (
         <>
             <Header loggedIn={loggedIn} />

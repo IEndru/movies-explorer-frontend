@@ -12,6 +12,7 @@ export function useForm() {
         setValues({...values, [name]: value});
         setErrs({...errs, [name]: event.target.validationMessage});
         setIsValidForm(event.target.closest('form').checkValidity());
+
     };
 
     return {values, setValues, handleChange, errs, isValidForm, setIsValidForm };

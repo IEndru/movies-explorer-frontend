@@ -10,25 +10,35 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import * as MainApi from '../../utils/MainApi';
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [currentUser, setCurrentUser] = useState({})
+    const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
     const [isMessage, setIsMessage] = useState('');
     const [isSavedMovies, setIsSavedMovies] = useState([]);
+    const [isSuccess, setIsSuccess] = useState(false);
     const navigate = useNavigate();
+
+    console.log(isInfoTooltipOpen)
 
 /*console.log(isSavedMovies, 'сохраненные фильмы');*/
 
     const handleRegister = ({name, email, password}) => {
         MainApi.register({name, email, password})
             .then((res) => {
+                setIsInfoTooltipOpen(true);
+                setIsSuccess(true);
+                setIsMessage('Регистрация прошла успешно')
                 console.log('Регистрация прошла успешно', res);
                 navigate('/signin');
             })
             .catch((err) => {
                 setIsMessage('Что-то пошло не так! Попробуйте ещё раз.');
+                setIsInfoTooltipOpen(true);
+                setIsSuccess(false);
                 console.error(`Ошибка при регистрации: ${err.message}`);
                 setIsLoggedIn(false);
             });
@@ -40,6 +50,10 @@ function App() {
                 //console.log(data.token)
                 console.log(data)
                 if (data.token) {
+                    setIsInfoTooltipOpen(true);
+                    setIsSuccess(true);
+                    setIsMessage('Авторизация прошла успешно')
+                    console.log(isInfoTooltipOpen);
                     localStorage.setItem('isLoggedIn', JSON.stringify(true));
                     setIsLoggedIn(true);
                     //console.log(data.token)
@@ -57,13 +71,13 @@ function App() {
                 }
             })
             .catch((err) => {
+                setIsInfoTooltipOpen(true);
                 setIsMessage('Что-то пошло не так! Попробуйте ещё раз.');
-                console.error(`Ошибка при входе: ${err}`);
+                console.log(`Ошибка при входе: ${err}`);
+                setIsSuccess(false);
 
             });
     };
-
-
 
     const handleSignOut = () => {
         setIsLoggedIn(false);
@@ -97,12 +111,12 @@ function App() {
                 })
                 .catch((err) => {
                     console.log(err);
-                    setIsLoggedIn(false);
-                    localStorage.removeItem('token');
+                    /*setIsLoggedIn(false);*/
+                    /*localStorage.removeItem('token');*/
                 });
 
         }
-    }, [isLoggedIn]);
+    }, [isLoggedIn, navigate]);
 
 //изменение данных профиля
     const handelUpdateUser = (newDataUser) => {
@@ -113,9 +127,15 @@ function App() {
                 .then((data) => {
                     console.log(data, 'Профиль пользователя успешно редактирован')
                     setCurrentUser(data);
+                    setIsInfoTooltipOpen(true);
+                    setIsSuccess(true);
+                    setIsMessage('Профиль пользователя успешно редактирован')
                 })
                 .catch(err => {
-                        console.log('При обновлении профиля произошла ошибка.', err)
+                    console.log('При обновлении профиля произошла ошибка.', err)
+                    setIsInfoTooltipOpen(true);
+                    setIsSuccess(false);
+                    setIsMessage('При обновлении профиля произошла ошибка.')
                     }
                 )
         }
@@ -129,6 +149,7 @@ function App() {
         if (!isFavourite){
             MainApi.createMovie(movie, token)
                 .then((newSavedMovie) => {
+                    console.log(newSavedMovie)
 
                     // Получение текущего списка сохраненных фильмов из локального хранилища
                     const currentSavedMovies = JSON.parse(localStorage.getItem('isSavedMovies')) || [];
@@ -149,11 +170,8 @@ function App() {
 //delete фильмов
     const handleRemoveMovie = (movie) => {
         const token = localStorage.getItem('token');
-        const savedMovie = isSavedMovies.find((m)=>m.movieId === movie.id || movie.movieId );
-        const id = savedMovie ? savedMovie._id : null;
         console.log(movie)
-        console.log(savedMovie._id)
-        MainApi.deleteMovieById(id, token)
+        MainApi.deleteMovieById(movie._id, token)
             .then(() => {
                 // Получение текущего списка сохраненных фильмов из локального хранилища
                 const currentSavedMovies = JSON.parse(localStorage.getItem('isSavedMovies')) || [];
@@ -167,6 +185,11 @@ function App() {
                 alert(err);
             })
     };
+
+    const closePopupInfoTooltip = () => {
+        setIsInfoTooltipOpen(false);
+    };
+
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
@@ -201,10 +224,18 @@ function App() {
                 }
                 />
 
-                <Route path="/signin" element={<Login onLogin={handleLogin}/>}/>
+                <Route path="/signin" element={<Login
+                    onLogin={handleLogin}
+                    onClose={closePopupInfoTooltip}
+                    isOpen={isInfoTooltipOpen}
+                />}/>
                 <Route path="/signup" element={<Register onRegister={handleRegister}/>}/>
                 <Route path='*' element={<NotFoundPage/>}/>
             </Routes>
+            <InfoTooltip onClose={closePopupInfoTooltip}
+                         isOpen={isInfoTooltipOpen}
+                         message={isMessage}
+                         isSuccess={isSuccess}/>
         </CurrentUserContext.Provider>
     );
 }

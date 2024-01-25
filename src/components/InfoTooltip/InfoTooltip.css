@@ -1,0 +1,92 @@
+.popup {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    font-family: 'Inter', Arial, sans-serif;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    opacity: 0;
+    transition: visibility .2s linear 0s, opacity .4s linear 0s;
+}
+
+.popup__close-button {
+    position: absolute;
+    display: block;
+    top: -40px;
+    right:-40px;
+    margin: 0;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    border: 0;
+    background: transparent url(../../images/Close-Icon.svg);
+    box-sizing: border-box;
+    background-size: contain;
+    cursor: pointer;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.popup__close-button:hover {
+    opacity: 0.6;
+}
+
+
+.popup__container {
+    position: relative;
+    background: #FFFFFF;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    width: 430px;
+    padding:34px 36px 37px;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup__icon {
+    width: 120px;
+    height: 120px;
+    display: block;
+    margin: 26px auto 0;
+}
+
+.popup_opened {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup__title-forSign {
+    text-align: center;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 900;
+    margin: 32px 0 23px;
+}
+
+@media screen and (max-width: 620px) {
+    .popup__container {
+        padding:25px 22px;
+        width: 282px;
+    }
+
+    .popup__close-button {
+        width: 20px;
+        height: 20px;
+        top: -36px;
+        right: 0;
+    }
+}

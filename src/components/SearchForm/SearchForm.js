@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 
 const SearchForm = ({onSearchSubmit, shortMovies, onFilterCheckbox}) => {
     const location = useLocation();
-    const {values, handleChange, isValidForm } = useForm();
+    const {values, handleChange, isValidForm, resetForm } = useForm();
 
     //submit для /movies
     function handleFormSubmit(event) {
@@ -16,7 +16,7 @@ const SearchForm = ({onSearchSubmit, shortMovies, onFilterCheckbox}) => {
 
     function handleFormSubmitSave(event) {
         event.preventDefault();
-        onSearchSubmit(values.searchQuery, shortMovies);
+        onSearchSubmit(values.searchQuery, shortMovies, resetForm);
 
     }
 
