@@ -1,5 +1,4 @@
-export const BASE_URL = 'https://api.nomoreparties.co/beatfilm-movies';
-
+import { BASE_URL_BEATFILM } from './constans';
 function getResponse(response) {
     if (response.ok) {
         return response.json();
@@ -8,7 +7,7 @@ function getResponse(response) {
 }
 
 export function getMovies() {
-    return fetch(BASE_URL, {
+    return fetch(BASE_URL_BEATFILM, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

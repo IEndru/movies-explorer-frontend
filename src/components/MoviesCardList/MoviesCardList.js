@@ -12,7 +12,7 @@ import { Tablet,
     QuantityMoviesMax,
     AddMoviesMax} from '../../utils/constans';
 
-const MoviesCardList = ({movies, moviesSave, onSaveMovie, onRemoveMovie, isSavedMovies}) => {
+const MoviesCardList = ({movies, moviesSave, onSaveMovie, onRemoveMovie, isSavedMovies,error}) => {
 
     const [visibleMoviesCount, setVisibleMoviesCount] = useState(0);
     const [moviesIncrementStep, setMoviesIncrementStep] = useState(0);
@@ -52,10 +52,6 @@ const MoviesCardList = ({movies, moviesSave, onSaveMovie, onRemoveMovie, isSaved
         };
     }, [movies]);
 
-   /* useEffect(() => {
-        getVariablesMovies();
-    }, [movies]);*/
-
     // ф-ия создания обычных фильмов
     function showAllMovies() {
         return movies.map((movie, index) => {
@@ -87,18 +83,22 @@ const MoviesCardList = ({movies, moviesSave, onSaveMovie, onRemoveMovie, isSaved
         })
     }
 
-
     return (
         <div className='movies-list'>
-            <div className='movies-list__wrapper'>
-                { isSavedMoviesPage ? showSaveMovies() : showAllMovies()}
-            </div>
-
-            {!isSavedMoviesPage && movies.length > visibleMoviesCount ? (
-                <button className='movies-list__btn' type='button' onClick={showResultMovies}>
-                    Ещё
-                </button>) :
-                (<div className='movies-list__stub'/>)}
+            {error ? (
+                <span className='movies-list-err'>{error}</span>
+            ) : (
+                <>
+                    <div className='movies-list__wrapper'>
+                        {isSavedMoviesPage ? showSaveMovies() : showAllMovies()}
+                    </div>
+                    {!isSavedMoviesPage && movies.length > visibleMoviesCount && (
+                        <button className='movies-list__btn' type='button' onClick={showResultMovies}>
+                            Ещё
+                        </button>
+                    )}
+                </>
+            )}
         </div>
     )
 };

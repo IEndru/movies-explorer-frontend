@@ -113,6 +113,9 @@ function App() {
                     console.log(err);
                     /*setIsLoggedIn(false);*/
                     /*localStorage.removeItem('token');*/
+                   /* setIsInfoTooltipOpen(true);
+                    setIsSuccess(false);
+                    setIsMessage(err)*/
                 });
 
         }
@@ -125,6 +128,7 @@ function App() {
         if (token) {
             MainApi.updateUser(newDataUser, token)
                 .then((data) => {
+                    setIsMessage('')
                     console.log(data, 'Профиль пользователя успешно редактирован')
                     setCurrentUser(data);
                     setIsInfoTooltipOpen(true);
@@ -133,8 +137,8 @@ function App() {
                 })
                 .catch(err => {
                     console.log('При обновлении профиля произошла ошибка.', err)
-                    setIsInfoTooltipOpen(true);
-                    setIsSuccess(false);
+                   /* setIsInfoTooltipOpen(true);
+                    setIsSuccess(false);*/
                     setIsMessage('При обновлении профиля произошла ошибка.')
                     }
                 )
@@ -220,6 +224,7 @@ function App() {
                                     loggedIn={isLoggedIn}
                                     onSignOut={handleSignOut}
                                     onUpdateUser={handelUpdateUser}
+                                    isMessage={isMessage}
                     />
                 }
                 />

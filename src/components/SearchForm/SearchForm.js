@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 
 const SearchForm = ({onSearchSubmit, shortMovies, onFilterCheckbox}) => {
     const location = useLocation();
-    const {values, handleChange, isValidForm, resetForm } = useForm();
+    const {values, handleChange, isValidForm,errs } = useForm();
 
     //submit для /movies
     function handleFormSubmit(event) {
@@ -16,8 +16,7 @@ const SearchForm = ({onSearchSubmit, shortMovies, onFilterCheckbox}) => {
 
     function handleFormSubmitSave(event) {
         event.preventDefault();
-        onSearchSubmit(values.searchQuery, shortMovies, resetForm);
-
+        onSearchSubmit(values.searchQuery, shortMovies);
     }
 
     useEffect(() => {
@@ -40,8 +39,11 @@ const submitValue = location.pathname === '/movies' ? handleFormSubmit : handleF
                        onChange={handleChange}
                        required
                 />
-                <button type='submit' className='search__btn'>Поиск</button>
+                <button type='submit' className='search__btn' disabled={!isValidForm}>Поиск</button>
                 </div>
+                <span className='search-form__err'>
+                    {errs.searchQuery ? '«Нужно ввести ключевое слово».' : ''}
+                </span>
                 <FilterCheckbox
                     onFilterCheckbox={onFilterCheckbox}
                     shortMovies={shortMovies}

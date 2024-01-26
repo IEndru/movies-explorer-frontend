@@ -5,7 +5,7 @@ import Header from "../Header/Header";
 import { useForm } from '../../hooks/useForm';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-function Profile ({loggedIn, onSignOut, onUpdateUser}) {
+function Profile ({loggedIn, onSignOut, onUpdateUser, isMessage}) {
     const currentUser = useContext(CurrentUserContext);
 
     const {values, setValues, handleChange, errs, isValidForm, setIsValidForm} = useForm();
@@ -103,17 +103,16 @@ function Profile ({loggedIn, onSignOut, onUpdateUser}) {
                         </div>
                         {errs.email ? (<span className='profile__error'>{errs.email}</span>) : (<span className='profile__error-stub'></span>) }
                     </div>
-                        {/*{!isValidForm && Object.keys(errs).length > 0 ? (*/}
                             {Object.values(errs).some(err => err !== '') ? (
                             <div className='profile__btns-err'>
-                                <span className='profile__btn-err-text'>При обновлении профиля произошла ошибка.</span>
+                                <span className='profile__btn-err-text'>{isMessage ? isMessage :''}</span>
                                 <button className='profile__btn-err' type='button' disabled>
                                     Сохранить
                                 </button>
                             </div>
                         ) : isEditing ? (
                             <div className='profile__btns-save'>
-                                <button className='profile__btn-save' type='submit' >
+                                <button className={`profile__btn-save ${!isValidForm ? 'profile__btn-save_disabled' : ''}`} type='submit' disabled={!isValidForm}>
                                     Сохранить
                                 </button>
                             </div>

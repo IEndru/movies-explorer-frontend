@@ -141,6 +141,12 @@
     opacity: 0.8;
 }
 
+.profile__btn-save_disabled {
+    background: #F8F8F8;
+    color: #C2C2C2;
+    cursor: not-allowed;
+}
+
 .profile__btns-err {
     margin-top: -31px;
     display: flex;
@@ -157,6 +163,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    height: 14px;
 }
 
 .profile__btn-err {

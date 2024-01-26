@@ -1,7 +1,9 @@
+import { ShortDurationThreshold } from './constans';
+
 // фильтрация для чекбокс короткометражки
 export function filterShortDuration(movies) {
     return movies.filter((movie) => {
-        return movie.duration < 40;
+        return movie.duration < ShortDurationThreshold;
     });
 }
 

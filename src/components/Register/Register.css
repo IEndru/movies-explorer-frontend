@@ -80,14 +80,14 @@
 }
 
 .register__err {
-    margin-top: 12px;
+    margin-top: 1px;
     width: 100%;
     color: #EE3465;
     font-size: 10px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    height: 12px;
+    height: 23px;
 }
 
 .register__err:last-of-type {
@@ -114,6 +114,12 @@
 
 .register__btn-sub:hover {
     opacity: 0.8;
+}
+
+.register__btn-sub_disabled {
+    background: #F8F8F8;
+    color: #C2C2C2;
+    cursor: not-allowed;
 }
 
 .register__footer {

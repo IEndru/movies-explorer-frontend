@@ -1,5 +1,5 @@
 .filter-checkbox {
-    margin-top: 28px;
+    margin-top: 11px;
     display: flex;
     align-items: center;
 }
@@ -52,7 +52,7 @@
 
 @media screen and (max-width: 320px) {
     .filter-checkbox {
-        margin-top: 30px;
+        margin-top: 13px;
     }
 
     .filter-checkbox__checkbox-label {

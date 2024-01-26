@@ -1,4 +1,4 @@
-export const BASE_URL ='https://api.iendrudiploma.nomoredomainsmonster.ru';
+import { BASE_URL } from './constans';
 
 function getResponse(response) {
     if (response.ok) {

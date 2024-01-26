@@ -2,15 +2,14 @@ import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import './Register.css'
 import LogoInHeader from '../../images/LogoInHeader.png';
+import { useForm } from '../../hooks/useForm';
 
 function Register ({onRegister}) {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const {values, handleChange, errs, isValidForm} = useForm();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onRegister({name, email, password})
+        onRegister(values)
     };
 
     return (
@@ -21,47 +20,53 @@ function Register ({onRegister}) {
                 </Link>
                 <h1 className='register__title'>Добро пожаловать!</h1>
             </div>
-            <form className='register__form' onSubmit={handleSubmit}>
+            <form className='register__form form' onSubmit={handleSubmit}>
                 <label className='register__label' htmlFor='name'>Имя</label>
                 <input className='register__input'
                        id='name'
+                       name= 'name'
                        type='text'
-                       value={name}
+                       value={values.name || ''}
                        minLength='2'
                        maxLength='30'
                        required
                        placeholder='Введите имя'
-                       onChange={({target}) => setName(target.value)}
+                       onChange={handleChange}
+                       pattern='^[A-Za-zА-Яа-яЁё\s\-]+$'
                 />
-                <span className='register__err'></span>
+                <span className='register__err'>{errs.name}</span>
 
                 <label className='register__label' htmlFor='email' >E-mail</label>
                 <input className='register__input'
                        id='email'
                        type='email'
-                       value={email}
+                       name='email'
+                       value={values.email || ''}
                        minLength='2'
                        maxLength='30'
+                       pattern='^\S+@\S+\.\S+$'
                        required
                        placeholder='Введите почту'
-                       onChange={({target}) => setEmail(target.value)}
+                       onChange={handleChange}
                 />
-                <span className='register__err'></span>
+                <span className='register__err'>{errs.email}</span>
 
                 <label className='register__label' htmlFor='password'>Пароль</label>
                 <input className='register__input'
                        id='password'
                        type='password'
-                       value={password}
-                       minLength='5'
+                       value={values.password || ''}
+                       minLength='2'
                        maxLength='30'
+                       name="password"
                        required
                        placeholder='Введите пароль'
-                       onChange={({target}) => setPassword(target.value)}
+                       onChange={handleChange}
                 />
-                <span className='register__err'></span>
-
-                <button className='register__btn-sub' type='submit'>Зарегистрироваться</button>
+                <span className='register__err'>{errs.password}</span>
+                <button className={`register__btn-sub ${!isValidForm ? 'register__btn-sub_disabled' : ''}`} type='submit' disabled={!isValidForm}>
+                    Войти
+                </button>
                 <div className='register__footer'>
                     <span className='register__question'>Уже зарегистрированы?</span>
                     <Link to="/signin" className='register__link'>Войти</Link>

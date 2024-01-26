@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css'
 import LogoInHeader from '../../images/LogoInHeader.png';
+import { useForm } from '../../hooks/useForm';
 
 function Login ({onLogin}) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const {values, handleChange, errs, isValidForm} = useForm();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        onLogin({email,password})
+        onLogin(values)
     };
 
     return (
@@ -20,29 +20,36 @@ function Login ({onLogin}) {
                 </Link>
                 <h1 className='login__title'>Рады видеть!</h1>
             </div>
-            <form className='login__form' onSubmit={handleSubmit}>
+            <form className='login__form form' onSubmit={handleSubmit}>
                 <label className='login__label' htmlFor='email'>E-mail</label>
                 <input className='login__input'
+                       name='email'
+                       required
                        id='email'
                        type='email'
-                       value={email}
+                       value={values.email || ''}
                        placeholder='Введите почту'
-                       onChange={({target}) => setEmail(target.value)}
+                       pattern='^\S+@\S+\.\S+$'
+                       onChange={handleChange}
                 />
-                <span className='login__err'></span>
+                <span className='login__err'>{errs.email}</span>
 
                 <label className='login__label' htmlFor='password' >Пароль</label>
                 <input className='login__input'
                        id='password'
                        type='password'
+                       name="password"
+                       minLength= '2'
+                       maxLength= '30'
+                       required
                        placeholder='Введите пароль'
-                       value={password}
-                       onChange={({target}) => setPassword(target.value)}
-
+                       value={values.password || ''}
+                       onChange={handleChange}
                 />
-                <span className='login__err'></span>
-
-                <button className='login__btn-sub' type='submit'>Войти</button>
+                <span className='login__err'>{errs.password}</span>
+                <button className={`login__btn-sub ${!isValidForm ? 'login__btn-sub_disabled' : ''}`} type='submit' disabled={!isValidForm}>
+                    Войти
+                </button>
                 <div className='login__footer'>
                     <span className='login__question'>Ещё не зарегистрированы?</span>
                     <Link to='/signup' className='login__link'>Регистрация</Link>

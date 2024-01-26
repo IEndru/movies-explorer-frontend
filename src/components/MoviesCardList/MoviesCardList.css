@@ -32,6 +32,17 @@
     transition: opacity 0.5s ease-in-out;
 }
 
+.movies-list-err {
+    color: #FFFFFF;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    display: flex;
+    justify-content: center;
+    min-height: 300px;
+}
+
 .movies-list__btn:hover {
     opacity: 0.8;
 }
