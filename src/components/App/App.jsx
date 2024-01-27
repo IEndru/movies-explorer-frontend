@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {Routes, Route, useNavigate} from 'react-router-dom';
+import {Routes, Route, useNavigate, Navigate} from 'react-router-dom';
 import {CurrentUserContext} from "../../contexts/CurrentUserContext";
 
 import Main from "../Main/Main";
@@ -14,7 +14,8 @@ import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import * as MainApi from '../../utils/MainApi';
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const loggedInFromStoradge = localStorage.getItem('isLoggedIn')
+    const [isLoggedIn, setIsLoggedIn] = useState(loggedInFromStoradge);
     const [currentUser, setCurrentUser] = useState({})
     const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
     const [isMessage, setIsMessage] = useState('');
@@ -22,18 +23,12 @@ function App() {
     const [isSuccess, setIsSuccess] = useState(false);
     const navigate = useNavigate();
 
-    console.log(isInfoTooltipOpen)
-
-/*console.log(isSavedMovies, 'сохраненные фильмы');*/
-
     const handleRegister = ({name, email, password}) => {
         MainApi.register({name, email, password})
             .then((res) => {
-                setIsInfoTooltipOpen(true);
-                setIsSuccess(true);
-                setIsMessage('Регистрация прошла успешно')
-                console.log('Регистрация прошла успешно', res);
-                navigate('/signin');
+                if (res) {
+                    handleLogin({ email, password });
+                }
             })
             .catch((err) => {
                 setIsMessage('Что-то пошло не так! Попробуйте ещё раз.');
@@ -47,7 +42,6 @@ function App() {
     const handleLogin = ({email, password}) => {
         MainApi.authorize({email, password})
             .then((data) => {
-                //console.log(data.token)
                 console.log(data)
                 if (data.token) {
                     setIsInfoTooltipOpen(true);
@@ -84,7 +78,6 @@ function App() {
         localStorage.removeItem('isLoggedIn');
         localStorage.removeItem('token');
         localStorage.removeItem('MoviesFromApi');
-
         localStorage.clear();
         navigate('/');
     };
@@ -96,7 +89,6 @@ function App() {
         if (token && storedIsLoggedIn) {
             MainApi.getUserInfo(token)
                 .then((data) => {
-                    /*console.log(data);*/
                     setCurrentUser(data);
                     setIsLoggedIn(true);
                 })
@@ -111,13 +103,7 @@ function App() {
                 })
                 .catch((err) => {
                     console.log(err);
-                    /*setIsLoggedIn(false);*/
-                    /*localStorage.removeItem('token');*/
-                   /* setIsInfoTooltipOpen(true);
-                    setIsSuccess(false);
-                    setIsMessage(err)*/
                 });
-
         }
     }, [isLoggedIn, navigate]);
 
@@ -137,8 +123,6 @@ function App() {
                 })
                 .catch(err => {
                     console.log('При обновлении профиля произошла ошибка.', err)
-                   /* setIsInfoTooltipOpen(true);
-                    setIsSuccess(false);*/
                     setIsMessage('При обновлении профиля произошла ошибка.')
                     }
                 )
@@ -153,8 +137,6 @@ function App() {
         if (!isFavourite){
             MainApi.createMovie(movie, token)
                 .then((newSavedMovie) => {
-                    console.log(newSavedMovie)
-
                     // Получение текущего списка сохраненных фильмов из локального хранилища
                     const currentSavedMovies = JSON.parse(localStorage.getItem('isSavedMovies')) || [];
                     // Обновление списка и добавление нового фильма
@@ -169,7 +151,6 @@ function App() {
                 });
         }
     }
-
 
 //delete фильмов
     const handleRemoveMovie = (movie) => {
@@ -228,13 +209,8 @@ function App() {
                     />
                 }
                 />
-
-                <Route path="/signin" element={<Login
-                    onLogin={handleLogin}
-                    onClose={closePopupInfoTooltip}
-                    isOpen={isInfoTooltipOpen}
-                />}/>
-                <Route path="/signup" element={<Register onRegister={handleRegister}/>}/>
+                <Route path="/signin" element={isLoggedIn ? <Navigate to='/' /> : <Login onLogin={handleLogin} />} />
+                <Route path="/signup" element={isLoggedIn ? <Navigate to='/' /> : <Register onRegister={handleRegister} />} />
                 <Route path='*' element={<NotFoundPage/>}/>
             </Routes>
             <InfoTooltip onClose={closePopupInfoTooltip}
