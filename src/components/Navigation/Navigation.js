@@ -7,7 +7,6 @@ import MenuFromBurger from "../MenuFromBurger/MenuFromBurger";
 function Navigation ({ loggedIn, isHomePage }){
     let localRoute = useLocation();
     const [isBurgerOpen, setIsBurgerOpen] = useState(false);
-    console.log(loggedIn)
     const changeBurgerMenu = () => setIsBurgerOpen(prevIsBurgerOpen => !prevIsBurgerOpen);
 
     return (
